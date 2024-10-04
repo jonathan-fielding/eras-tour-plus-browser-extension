@@ -31,22 +31,29 @@
 
 ## Table of Contents
 
-- [Intro](#intro)
-- [Features](#features)
-- [Structure](#structure)
-    - [ChromeExtension](#structure-chrome-extension)
-    - [Packages](#structure-packages)
-    - [Pages](#structure-pages)
-- [Getting started](#getting-started)
-    - [Chrome](#getting-started-chrome)
-    - [Firefox](#getting-started-firefox)
-- [Install dependency](#install-dependency)
-    - [For root](#install-dependency-for-root)
-    - [For module](#install-dependency-for-module)
-- [Community](#community)
-- [Reference](#reference)
-- [Star History](#star-history)
-- [Contributors](#contributors)
+- [Table of Contents](#table-of-contents)
+- [Intro ](#intro-)
+- [Features ](#features-)
+- [Getting started: ](#getting-started-)
+    - [This will change eol(End of line) to the same as on Linux/Mac, without this, you will have conflicts with your teammates with those systems and our bash script won't work](#this-will-change-eolend-of-line-to-the-same-as-on-linuxmac-without-this-you-will-have-conflicts-with-your-teammates-with-those-systems-and-our-bash-script-wont-work)
+  - [And then, depending on needs:](#and-then-depending-on-needs)
+  - [For Chrome: ](#for-chrome-)
+  - [For Firefox: ](#for-firefox-)
+- [Install dependency for turborepo: ](#install-dependency-for-turborepo-)
+  - [For root: ](#for-root-)
+  - [For module: ](#for-module-)
+- [Env Variables](#env-variables)
+    - [If you want to set it for each package independently:](#if-you-want-to-set-it-for-each-package-independently)
+    - [Remember you can't use global and local at the same time for the same package(It will be overwritten)](#remember-you-cant-use-global-and-local-at-the-same-time-for-the-same-packageit-will-be-overwritten)
+- [Structure ](#structure-)
+  - [ChromeExtension ](#chromeextension-)
+  - [Packages ](#packages-)
+  - [Pages ](#pages-)
+- [Community ](#community-)
+- [Reference ](#reference-)
+- [Star History ](#star-history-)
+- [Contributors ](#contributors-)
+- [Special Thanks To](#special-thanks-to)
 
 ## Intro <a name="intro"></a>
 
@@ -169,9 +176,6 @@ Some shared packages
   user's page (`content_scripts` in manifest.json)
 - `content-runtime` - [content runtime script](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality)
   this can be inject from `popup` like standard `content`
-- `devtools` - [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating) for chrome
-  extension (`devtools_page` in manifest.json)
-- `devtools-panel` - devtools panel for [devtools](pages/devtools/src/index.ts)
 - `new-tab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome
   extension (`chrome_url_overrides.newtab` in manifest.json)
 - `options` - [options](https://developer.chrome.com/docs/extensions/mv3/options/) for chrome extension (`options_page`

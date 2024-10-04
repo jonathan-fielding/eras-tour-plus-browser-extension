@@ -1,11 +1,11 @@
 {
   "extensionDescription": {
-    "description": "Extension description",
-    "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
+    "description": "An Echanted way to experience the Eras tour on Disney Plus",
+    "message": "An Echanted way to experience the Eras tour on Disney Plus"
   },
   "extensionName": {
-    "description": "Extension name",
-    "message": "Chrome extension boilerplate"
+    "description": "Eras Tour Plus",
+    "message": "Eras Tour Plus"
   },
   "toggleTheme": {
     "message": "Toggle theme"
