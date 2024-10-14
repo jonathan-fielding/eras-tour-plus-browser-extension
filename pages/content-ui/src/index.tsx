@@ -4,6 +4,12 @@ import tailwindcssOutput from '../dist/tailwind-output.css?inline';
 
 const root = document.createElement('div');
 root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
+root.style.zIndex = '9999';
+root.style.position = 'fixed';
+root.style.top = '10px';
+root.style.right = '10px';
+root.style.width = '300px';
+root.style.maxWidth = '50%';
 
 document.body.append(root);
 

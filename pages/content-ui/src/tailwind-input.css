@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.runtime-content-view-text {
+    font-size: 20px;
+    background: #fff;
+    border-radius: 10px;
+  }
+  
+  
+  .eras-control-bar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .show-playlist {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .playlist {
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+  
+  .playlist ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .playlist li {
+    margin-top: 5px;
+  }
+  
+  .playlist button {
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+    width: 100%
+  }
