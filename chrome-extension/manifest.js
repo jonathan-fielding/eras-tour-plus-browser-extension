@@ -17,7 +17,7 @@ const manifest = {
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   host_permissions: ['<all_urls>'],
-  permissions: ['https://www.disneyplus.com/*'],
+  permissions: [],
   action: {
     default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
