@@ -10,14 +10,14 @@
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![](https://badges.aleen42.com/src/vitejs.svg)
 
-![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
-![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/lint.yml/badge.svg)
+![GitHub action badge](https://github.com/jonathan-fielding/eras-tour-plus-browser-extension/actions/workflows/build-zip.yml/badge.svg)
+![GitHub action badge](https://github.com/jonathan-fielding/eras-tour-plus-browser-extension/actions/workflows/lint.yml/badge.svg)
 
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
+<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/jonathan-fielding/eras-tour-plus-browser-extensionFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 <a href="https://discord.gg/4ERQ6jgV9a" target="_blank"><img src="https://discord.com/api/guilds/1263404974830915637/widget.png"/></a>
 
 > This boilerplate
-> has [Legacy version](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/tree/legacy)
+> has [Legacy version](https://github.com/jonathan-fielding/eras-tour-plus-browser-extension/tree/legacy)
 
 </div>
 
@@ -90,7 +90,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ### For Chrome: <a name="getting-started-chrome"></a>
 
 1. Run:
-    - Dev: `pnpm dev` (On windows, you should run as administrator. [(Issue#456)](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456)
+    - Dev: `pnpm dev` (On windows, you should run as administrator. [(Issue#456)](https://github.com/jonathan-fielding/eras-tour-plus-browser-extension/issues/456)
     - Prod: `pnpm build`
 2. Open in browser - `chrome://extensions`
 3. Check - `Developer mode`
@@ -203,11 +203,11 @@ Also, suggest new features or share any challenges you've faced while developing
 
 ## Star History <a name="star-history"></a>
 
-<a href="https://star-history.com/#Jonghakseo/chrome-extension-boilerplate-react-vite&Date">
+<a href="https://star-history.com/#jonathan-fielding/eras-tour-plus-browser-extension&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=jonathan-fielding/eras-tour-plus-browser-extension&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=jonathan-fielding/eras-tour-plus-browser-extension&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=jonathan-fielding/eras-tour-plus-browser-extension&type=Date" />
  </picture>
 </a>
 
@@ -215,8 +215,8 @@ Also, suggest new features or share any challenges you've faced while developing
 
 This Boilerplate is made possible thanks to all of its contributors.
 
-<a href="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/graphs/contributors">
-  <img width="500px" src="https://contrib.rocks/image?repo=Jonghakseo/chrome-extension-boilerplate-react-vite" alt="All Contributors"/>
+<a href="https://github.com/jonathan-fielding/eras-tour-plus-browser-extension/graphs/contributors">
+  <img width="500px" src="https://contrib.rocks/image?repo=jonathan-fielding/eras-tour-plus-browser-extension" alt="All Contributors"/>
 </a>
 
 ---
