@@ -14,15 +14,8 @@
 ![GitHub action badge](https://github.com/jonathan-fielding/eras-tour-plus-browser-extension/actions/workflows/lint.yml/badge.svg)
 
 <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/jonathan-fielding/eras-tour-plus-browser-extensionFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
-<a href="https://discord.gg/4ERQ6jgV9a" target="_blank"><img src="https://discord.com/api/guilds/1263404974830915637/widget.png"/></a>
-
-> This boilerplate
-> has [Legacy version](https://github.com/jonathan-fielding/eras-tour-plus-browser-extension/tree/legacy)
 
 </div>
-
-> [!NOTE]
-> This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
 > [!TIP]
 > Share storage state between all pages
