@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
+import { AiOutlineShrink } from 'react-icons/ai';
+import { ImEnlarge2 } from 'react-icons/im';
 
 type Era =
+  | 'Intro'
   | 'Lover'
   | 'Fearless'
   | 'Evermore'
@@ -14,24 +17,40 @@ type Era =
   | 'Credits'
   | 'Acoustic Collection';
 
+import introAlbumCover from '../public/albums/intro.jpg';
+import loverAlbumCover from '../public/albums/lover-album-cover.webp';
+import fearlessTaylorsVersion from '../public/albums/fearless-taylors-version.webp';
+import evermoreAlbum from '../public/albums/evermore-album.webp';
+import reputationAlbum from '../public/albums/reputation-album.webp';
+import speakNowTaylorsVersion from '../public/albums/speak-now-taylors-version.webp';
+import redTaylorsVersion from '../public/albums/red-taylors-version.webp';
+import folkloreAlbumCover from '../public/albums/folklore-album-cover.webp';
+import album1989Cover from '../public/albums/1989tvcover.jpg';
+import acousticSetCover from '../public/albums/acoustic-set-cover.jpg';
+import midnightsCover from '../public/albums/midnights-cover.webp';
+import creditsCover from '../public/albums/credits-cover.jpg';
+import acousticCollectionCover from '../public/albums/acoustic-collection-cover.jpg';
+
 const eras: {
-  [key in Era]: string;
+  [key in Era]: { color: string; textColor: string; cover: string };
 } = {
-  Lover: 'bg-pink-500',
-  Fearless: 'bg-amber-500',
-  Evermore: 'bg-orange-500',
-  Reputation: 'bg-black',
-  'Speak Now': 'bg-purple-500',
-  Red: 'bg-red-500',
-  Folklore: 'bg-gray-500',
-  1989: 'bg-blue-700',
-  'Acoustic Set': 'bg-brown-500',
-  Midnights: 'bg-blue-300',
-  Credits: 'bg-gray-500',
-  'Acoustic Collection': '',
+  Intro: { color: 'bg-black', textColor: 'white', cover: introAlbumCover },
+  Lover: { color: 'bg-pink-500', textColor: 'white', cover: loverAlbumCover },
+  Fearless: { color: 'bg-amber-500', textColor: 'white', cover: fearlessTaylorsVersion },
+  Evermore: { color: 'bg-orange-500', textColor: 'white', cover: evermoreAlbum },
+  Reputation: { color: 'bg-black', textColor: 'white', cover: reputationAlbum },
+  'Speak Now': { color: 'bg-purple-500', textColor: 'white', cover: speakNowTaylorsVersion },
+  Red: { color: 'bg-red-500', textColor: 'white', cover: redTaylorsVersion },
+  Folklore: { color: 'bg-gray-500', textColor: 'white', cover: folkloreAlbumCover },
+  1989: { color: 'bg-blue-700', textColor: 'white', cover: album1989Cover },
+  'Acoustic Set': { color: 'bg-gray-500', textColor: 'white', cover: acousticSetCover },
+  Midnights: { color: 'bg-blue-300', textColor: 'black', cover: midnightsCover },
+  Credits: { color: 'bg-gray-500', textColor: 'white', cover: creditsCover },
+  'Acoustic Collection': { color: '', textColor: 'white', cover: acousticCollectionCover },
 };
 
 const songs = [
+  { name: 'Countdown (its been a long time)', time: 0, era: 'Intro' },
   { name: 'Miss Americana & the Heartbreak Prince (excerpt)', time: 122, era: 'Lover' },
   { name: 'Cruel Summer', time: 165, era: 'Lover' },
   { name: 'The Man', time: 557, era: 'Lover' },
@@ -121,6 +140,7 @@ const quickRewind = (steps: number) => {
 };
 
 export default function App() {
+  const [state, setState] = useState('small');
   const [time, setTime] = useState(0);
   const [showPlaylist, setShowPlaylist] = useState(false);
 
@@ -182,49 +202,89 @@ export default function App() {
     }
   };
   const song = songs.filter(song => song.time <= time).slice(-1)[0];
-  const eraColor = song?.era ? eras[song.era as Era] : 'bg-gray-500';
-
+  const eraColor = song && song?.era ? eras[song.era as Era].color : 'bg-gray-500';
+  const eraTextColor = song && song?.era ? eras[song.era as Era].textColor : 'white';
+  const eraAlbumCover = song && song?.era ? eras[song.era as Era].cover : 'bg-gray-500';
   const titleField = document.querySelector('.title-field');
 
   if (titleField && titleField.textContent && titleField.textContent.toLowerCase().includes('taylor swift')) {
-    return (
-      <div className="eras-tour-container ">
-        <div className="border-white border-2 rounded-md  mb-2">
-          <div className={`${eraColor} text-white text-center rounded-t-md p-2`}>{song.era}</div>
-          <div className="p-2 bg-white rounded-b-md">
-            <div className="eras-control-bar">
-              <button onClick={previousSong}>⏮️</button>
-              <div id="current-song">{songs.filter(song => song.time <= time).slice(-1)[0]?.name || 'End of Show'}</div>
-              <button onClick={nextSong}>⏭️</button>
+    if (state === 'expanded') {
+      return (
+        <div className="eras-tour-container ">
+          <div className="border-white border-2 rounded-md  mb-2">
+            <div className="relative">
+              <button onClick={() => setState('small')} className="bg-gray-600 w-8 h-8 absolute right-0 top-0">
+                <span className="hidden">Hide</span>{' '}
+                <AiOutlineShrink size={25} className="absolute top-1 left-1" color="white" />
+              </button>
+              <img src={eraAlbumCover} alt="Era cover" className="w-full rounded-t-md" />
             </div>
-            <button className="show-playlist" onClick={() => setShowPlaylist(!showPlaylist)}>
-              Show playlist
-            </button>
+            <div>
+              <div className={`${eraColor} text-${eraTextColor} text-center rounded-t-md p-2`}>{song?.era}</div>
+              <div className="p-2 bg-white rounded-b-md">
+                <div className="eras-control-bar">
+                  <button onClick={previousSong}>⏮️</button>
+                  <div id="current-song">
+                    {songs.filter(song => song.time <= time).slice(-1)[0]?.name || 'End of Show'}
+                  </div>
+                  <button onClick={nextSong}>⏭️</button>
+                </div>
+                <button className="show-playlist" onClick={() => setShowPlaylist(!showPlaylist)}>
+                  Show playlist
+                </button>
+              </div>
+            </div>
+          </div>
+          {showPlaylist && (
+            <div
+              className="playlist bg-white rounded-md p-2"
+              style={{
+                maxHeight: '200px',
+                overflowY: 'scroll',
+              }}>
+              <ul>
+                {songs.map(song => (
+                  <li key={`${song.name}-${song.era}`}>
+                    <button
+                      onClick={() => {
+                        skipToTime(song.time);
+                      }}>
+                      {song.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    } else {
+      return (
+        <div className="eras-tour-container ">
+          <div className="border-white border-2 rounded-md  mb-2">
+            <div>
+              <div className={`${eraColor} text-${eraTextColor} text-center rounded-t-md relative p-2`}>
+                <img src={eraAlbumCover} alt="Era cover" className="w-8 abs  absolute left-1 top-1" />
+                {song?.era}
+                <button onClick={() => setState('expanded')} className={`w-8 h-8 absolute right-0 top-0 ${eraColor}`}>
+                  <span className="hidden">Show</span>{' '}
+                  <ImEnlarge2 size={18} className="absolute top-2 left-2" color={eraTextColor} />
+                </button>
+              </div>
+              <div className="p-2 bg-white rounded-b-md">
+                <div className="eras-control-bar">
+                  <button onClick={previousSong}>⏮️</button>
+                  <div id="current-song">
+                    {songs.filter(song => song.time <= time).slice(-1)[0]?.name || 'End of Show'}
+                  </div>
+                  <button onClick={nextSong}>⏭️</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {showPlaylist && (
-          <div
-            className="playlist bg-white rounded-md p-2"
-            style={{
-              maxHeight: '200px',
-              overflowY: 'scroll',
-            }}>
-            <ul>
-              {songs.map(song => (
-                <li key={`${song.name}-${song.era}`}>
-                  <button
-                    onClick={() => {
-                      skipToTime(song.time);
-                    }}>
-                    {song.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    );
+      );
+    }
   } else {
     return <div></div>;
   }
