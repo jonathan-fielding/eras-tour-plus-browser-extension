@@ -17,7 +17,7 @@ const manifest = {
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   host_permissions: ['<all_urls>'],
-  permissions: [],
+  permissions: ['webRequest'],
   action: {
     default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
@@ -26,6 +26,10 @@ const manifest = {
     128: 'icon-128.png',
   },
   content_scripts: [
+    {
+      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      js: ['content/index.iife.js'],
+    },
     {
       matches: ['http://www.disneyplus.com/*', 'https://www.disneyplus.com/*', '<all_urls>'],
       js: ['content-ui/index.iife.js'],
@@ -37,6 +41,12 @@ const manifest = {
       matches: ['*://*/*'],
     },
   ],
+  browser_specific_settings: {
+    gecko: {
+      id: 'erastourplus@jonthanfielding.com',
+      strict_min_version: '131.0',
+    },
+  },
 };
 
 export default manifest;

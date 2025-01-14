@@ -18,16 +18,16 @@ type Era =
   | 'Acoustic Collection';
 
 import introAlbumCover from '../public/albums/intro.jpg';
-import loverAlbumCover from '../public/albums/lover-album-cover.webp';
-import fearlessTaylorsVersion from '../public/albums/fearless-taylors-version.webp';
-import evermoreAlbum from '../public/albums/evermore-album.webp';
-import reputationAlbum from '../public/albums/reputation-album.webp';
-import speakNowTaylorsVersion from '../public/albums/speak-now-taylors-version.webp';
-import redTaylorsVersion from '../public/albums/red-taylors-version.webp';
-import folkloreAlbumCover from '../public/albums/folklore-album-cover.webp';
+import loverAlbumCover from '../public/albums/lover-album-cover.jpg';
+import fearlessTaylorsVersion from '../public/albums/fearless-taylors-version.jpg';
+import evermoreAlbum from '../public/albums/evermore-album.jpg';
+import reputationAlbum from '../public/albums/reputation-album.jpg';
+import speakNowTaylorsVersion from '../public/albums/speak-now-taylors-version.jpg';
+import redTaylorsVersion from '../public/albums/red-taylors-version.jpg';
+import folkloreAlbumCover from '../public/albums/folklore-album-cover.jpg';
 import album1989Cover from '../public/albums/1989tvcover.jpg';
 import acousticSetCover from '../public/albums/acoustic-set-cover.jpg';
-import midnightsCover from '../public/albums/midnights-cover.webp';
+import midnightsCover from '../public/albums/midnights-cover.jpg';
 import creditsCover from '../public/albums/credits-cover.jpg';
 import acousticCollectionCover from '../public/albums/acoustic-collection-cover.jpg';
 
@@ -150,7 +150,8 @@ export default function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const currentTime = document.querySelector('video')?.currentTime || 0;
+      const currentTime = (document.querySelector('#hivePlayer') as HTMLVideoElement)?.currentTime || 0;
+      console.log(currentTime);
       setTime(currentTime);
     }, 1000);
 
@@ -162,7 +163,7 @@ export default function App() {
     const currentIndex = songs.findIndex(song => song.name === currentSong);
     if (currentIndex !== -1 && currentIndex < songs.length - 1) {
       const nextSong = songs[currentIndex - 1];
-      const videoElement = document.querySelector('video');
+      const videoElement = document.querySelector('#hivePlayer') as HTMLVideoElement;
       if (videoElement) {
         const timeDifference = videoElement.currentTime - nextSong.time;
         const steps = timeDifference / 10;
@@ -176,7 +177,7 @@ export default function App() {
     const currentIndex = songs.findIndex(song => song.name === currentSong);
     if (currentIndex !== -1 && currentIndex < songs.length - 1) {
       const nextSong = songs[currentIndex + 1];
-      const videoElement = document.querySelector('video');
+      const videoElement = document.querySelector('#hivePlayer') as HTMLVideoElement;
       if (videoElement) {
         const timeDifference = nextSong.time - videoElement.currentTime;
         const steps = timeDifference / 10;
@@ -186,7 +187,7 @@ export default function App() {
   };
 
   const skipToTime = (skipTime: number) => {
-    const currentTime = document.querySelector('video')?.currentTime || 0;
+    const currentTime = (document.querySelector('#hivePlayer') as HTMLVideoElement)?.currentTime || 0;
     setShowPlaylist(false);
 
     if (time > skipTime) {
