@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AiOutlineShrink } from 'react-icons/ai';
 import { ImEnlarge2 } from 'react-icons/im';
+import { useStorage } from '@extension/shared';
+import { currentTimeStorage } from '@extension/storage';
 
 type Era =
   | 'Intro'
@@ -141,22 +143,8 @@ const quickRewind = (steps: number) => {
 
 export default function App() {
   const [state, setState] = useState('small');
-  const [time, setTime] = useState(0);
+  const time = useStorage(currentTimeStorage);
   const [showPlaylist, setShowPlaylist] = useState(false);
-
-  useEffect(() => {
-    console.log('runtime content view loaded');
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const currentTime = (document.querySelector('#hivePlayer') as HTMLVideoElement)?.currentTime || 0;
-      console.log(currentTime);
-      setTime(currentTime);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const previousSong = () => {
     const currentSong = songs.filter(song => song.time <= time).slice(-1)[0]?.name;
@@ -165,7 +153,7 @@ export default function App() {
       const nextSong = songs[currentIndex - 1];
       const videoElement = document.querySelector('#hivePlayer') as HTMLVideoElement;
       if (videoElement) {
-        const timeDifference = videoElement.currentTime - nextSong.time;
+        const timeDifference = time - nextSong.time;
         const steps = timeDifference / 10;
         quickRewind(steps);
       }
@@ -179,7 +167,7 @@ export default function App() {
       const nextSong = songs[currentIndex + 1];
       const videoElement = document.querySelector('#hivePlayer') as HTMLVideoElement;
       if (videoElement) {
-        const timeDifference = nextSong.time - videoElement.currentTime;
+        const timeDifference = nextSong.time - time;
         const steps = timeDifference / 10;
         fastForward(steps);
       }
@@ -187,17 +175,16 @@ export default function App() {
   };
 
   const skipToTime = (skipTime: number) => {
-    const currentTime = (document.querySelector('#hivePlayer') as HTMLVideoElement)?.currentTime || 0;
     setShowPlaylist(false);
 
     if (time > skipTime) {
       // Skip backwards
-      const timeDifference = currentTime - skipTime;
+      const timeDifference = time - skipTime;
       const steps = timeDifference / 10;
       quickRewind(steps);
     } else {
       // Skip forwards
-      const timeDifference = skipTime - currentTime;
+      const timeDifference = skipTime - time;
       const steps = timeDifference / 10;
       fastForward(steps);
     }

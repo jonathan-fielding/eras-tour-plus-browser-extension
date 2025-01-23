@@ -17,7 +17,11 @@ const manifest = {
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   host_permissions: ['<all_urls>'],
-  permissions: ['webRequest'],
+  permissions: ['webRequest', 'storage', 'scripting', 'tabs', 'notifications'],
+  background: {
+    service_worker: 'background.iife.js',
+    type: 'module',
+  },
   action: {
     default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',

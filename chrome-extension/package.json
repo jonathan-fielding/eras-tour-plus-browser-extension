@@ -18,7 +18,8 @@
   "dependencies": {
     "webextension-polyfill": "^0.12.0",
     "@extension/shared": "workspace:*",
-    "@extension/storage": "workspace:*"
+    "@extension/storage": "workspace:*",
+    "m3u8-parser": "^7.2.0"
   },
   "devDependencies": {
     "@extension/dev-utils": "workspace:*",

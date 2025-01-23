@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { StorageEnum } from './enums';
 
 export type ValueOrUpdate<D> = D | ((prev: D) => Promise<D> | D);
@@ -43,3 +44,94 @@ export type StorageConfig<D = string> = {
     deserialize: (text: string) => D;
   };
 };
+
+export interface Manifest {
+  allowCache: boolean;
+  discontinuityStarts: any[];
+  dateRanges: DateRange[];
+  iFramePlaylists: IFramePlaylist[];
+  segments: Segment[];
+  independentSegments: boolean;
+  mediaGroups: any;
+  playlists: Playlist[];
+  version: number;
+  targetDuration: number;
+  playlistType: string;
+  mediaSequence: number;
+  dateTimeString: string;
+  dateTimeObject: string;
+  contentProtection: any;
+  discontinuitySequence: number;
+  endList: boolean;
+}
+
+export interface DateRange {
+  xStartOffset?: number;
+  duration?: number;
+  startDate: string;
+  id: string;
+  xAssetList?: string;
+  xResumeOffset?: number;
+  endDate?: string;
+  class?: string;
+  xSnap?: string;
+  cue?: string;
+}
+
+export interface IFramePlaylist {
+  attributes: Attributes;
+  uri: string;
+  timeline: number;
+}
+
+export interface Attributes {
+  URI: string;
+  CHARACTERISTICS: string;
+  'HDCP-LEVEL': string;
+  'VIDEO-RANGE': string;
+  RESOLUTION: Resolution;
+  CODECS: string;
+  BANDWIDTH: number;
+}
+
+export interface Resolution {
+  width: number;
+  height: number;
+}
+
+export interface Segment {
+  attributes?: any;
+  uri: string;
+  timeline: number;
+  programDateTime?: number;
+  dateTimeString?: string;
+  dateTimeObject?: string;
+  duration?: number;
+  key?: any;
+  map?: any;
+}
+
+export interface Playlist {
+  attributes?: PlayListAttributes;
+  uri: string;
+  timeline: number;
+  programDateTime?: number;
+  dateTimeString?: string;
+  dateTimeObject?: string;
+  duration?: number;
+  key?: any;
+  map?: any;
+}
+
+export interface PlayListAttributes {
+  SUBTITLES: string;
+  AUDIO: string;
+  CHARACTERISTICS: string;
+  'HDCP-LEVEL': string;
+  'VIDEO-RANGE': string;
+  'FRAME-RATE': number;
+  RESOLUTION: Resolution;
+  CODECS: string;
+  'AVERAGE-BANDWIDTH': string;
+  BANDWIDTH: number;
+}

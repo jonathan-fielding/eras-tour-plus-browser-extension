@@ -30,20 +30,6 @@ const waitForElement = (selector: string, timeout: number) => {
   });
 };
 
-const captureM3U8Files = () => {
-  console.log('capturing m3u8 files');
-  const originalFetch = window.fetch;
-  window.fetch = async function (input, init) {
-    const url = typeof input === 'string' ? input : input.toString();
-    if (url.includes('.m3u8')) {
-      console.log('m3u8 file loaded:', url);
-    }
-    return originalFetch.call(this, input, init);
-  };
-};
-
-captureM3U8Files();
-
 waitForElement('.btm-media-clients', 30000).then(element => {
   if (!element) {
     return;
